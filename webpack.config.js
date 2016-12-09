@@ -17,12 +17,20 @@ module.exports = {
 	module : {
 		loaders : [
 			{
+				test : /\.vue$/,
+				loader : 'vue'
+			},
+			{
 				test : /\.css|\.less$/,
 				loader : ExtractTextPlugin.extract( 'css-loader?sourceMap' )
 			},
 			{
-				test : /\.vue$/,
-				loader : 'vue'
+				test : /\.js$/,
+				loader : 'babel',
+				exclude : /node_modules/,
+				query: {
+					presets: ['es2015']
+				}
 			}
 		]
 	},

@@ -6,5 +6,5 @@ _createComponent( 'button' );
 
 function _createComponent( component ){
 	component = require( './' + component + '.vue' );
-	Vue.component( component.name , component );
+	return Vue.component( component.name , component );
 }
