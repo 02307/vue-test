@@ -5,7 +5,7 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 module.exports = {
 
 	entry : {
-		vendor : './static/components/components.js',
+		vendor : './static/scripts/main.js',
 		app : './static/scripts/index.js'
 	},
 
@@ -50,7 +50,8 @@ module.exports = {
 
 	resolve : {
 		alias : {
-			vue : path.resolve( __dirname , 'node_modules/vue/dist/vue.js' )
+			vue : path.resolve( __dirname , 'node_modules/vue/dist/vue.js' ),
+			"vue-router" : path.resolve( __dirname , 'node_modules/vue-router/dist/vue-router.js' )
 		}
 	},
 
