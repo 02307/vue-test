@@ -1,18 +1,12 @@
 <template>
-	<div>
-		Hello router
-
-	</div>
+    <div>
+        Hello router
+    </div>
 </template>
-
 <script type="text/javascript">
+module.exports = {
 
-	module.exports = {
+    props: {}
 
-		props : {
-			
-		}
-
-	}
-
+}
 </script>

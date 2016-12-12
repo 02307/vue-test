@@ -1,7 +1,9 @@
 const Vue = require( 'vue' );
 const VueRouter = require( 'vue-router' );
+const Vuex = require( 'vuex' );
 
 Vue.use( VueRouter );
+Vue.use( Vuex );
 
 const router = new VueRouter({
 		// mode : 'history',
@@ -36,6 +38,3 @@ window.app = new Vue({
 		router.push( '/user/33' );
 	}
 });
-
-
-

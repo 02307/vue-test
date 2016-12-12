@@ -17,21 +17,22 @@ module.exports = {
 	module : {
 		loaders : [
 			{
+				test : /\.js$/,
+				loader : 'babel',
+				exclude : /node_modules/,
+				query: {
+					presets: ['es2015', "stage-2"],
+      				plugins: ['transform-runtime']
+				}
+			},
+			{
 				test : /\.vue$/,
 				loader : 'vue'
 			},
 			{
 				test : /\.css|\.less$/,
 				loader : ExtractTextPlugin.extract( 'css-loader?sourceMap' )
-			},
-			{
-				test : /\.js$/,
-				loader : 'babel',
-				exclude : /node_modules/,
-				query: {
-					presets: ['es2015']
-				}
-			}
+			}	
 		]
 	},
 
@@ -50,8 +51,9 @@ module.exports = {
 
 	resolve : {
 		alias : {
-			vue : path.resolve( __dirname , 'node_modules/vue/dist/vue.js' ),
-			"vue-router" : path.resolve( __dirname , 'node_modules/vue-router/dist/vue-router.js' )
+			"vue" : path.resolve( __dirname , 'node_modules/vue/dist/vue.js' ),
+			"vue-router" : path.resolve( __dirname , 'node_modules/vue-router/dist/vue-router.js' ),
+			"vuex" : path.resolve( __dirname , 'node_modules/vuex/dist/vuex.js' )
 		}
 	},
 
@@ -59,6 +61,13 @@ module.exports = {
 	context : __dirname,
 
 	// 开启watch
-	watch : true
+	watch : true,
+	
+	// vue 的js部分也由babel来编译
+	vue : {
+		loaders : {
+			js : 'babel'
+		}
+	}
 
 }

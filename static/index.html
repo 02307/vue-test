@@ -5,6 +5,15 @@
     <title>vue test1</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" id="viewport" name="viewport">
+    <style type="text/css">
+        [class$="-enter-active"],[class$="-leave-active"]{
+            transition: all .3s;
+        }
+        .fade-enter,[class$="-leave-active"]{
+            transform: translate( 0 , 30px );
+            opacity: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,7 +24,9 @@
         <router-link to="/user/11">user1</router-link>
         <router-link to="/user/22">user2</router-link>
 
-    	<router-view></router-view>
+        <transition name="fade" mode="out-in">
+            <router-view></router-view>
+        </transition>    	
 
     </div>
 
