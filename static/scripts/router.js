@@ -11,7 +11,7 @@ module.exports = {
 		},
 		{
 			name : 'user',
-			path : '/user/:id',
+			path : '/user',
 			component : require( '../pages/user.vue' )
 		},
 		{

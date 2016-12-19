@@ -3,7 +3,7 @@ const VueRouter = require( 'vue-router' );
 const Vuex = require( 'vuex' );
 
 // 加载组件
-require( './components' );
+require( './src' );
 
 // 使用vue-router插件
 Vue.use( VueRouter );

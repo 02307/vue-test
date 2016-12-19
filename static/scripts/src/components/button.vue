@@ -1,15 +1,15 @@
  <template>
- 	<button
- 		:type="nativeType"
+ 	<button type="button"
  		:disabled="disabled"
- 		class="zwj-btn"
+ 		class="btn"
  		:class="[
- 			type ? 'zwj-btn-' + type : '',
- 			size ? 'zwj-btn-' + size : ''
+ 			type ? 'btn-' + type : '',
+ 			size ? 'btn-' + size : '',
+ 			{ active : active },
+ 			{ disabled : disabled }
  		]"
- 		@click="$emit( 'click' , $event )"
  	>
- 		<i :class="'zwj-icon-' + icon" v-if="icon"></i>
+ 		<i :class="'icon-' + icon" v-if="icon"></i>
  		<span v-if="$slots.default"><slot /></span>
  	</button>
  </template>
@@ -18,7 +18,13 @@
 
  	module.exports = {
 
- 		name : 'zwj-button',
+ 		name : 'btn',
+
+ 		data(){
+ 			return {
+ 				active : false
+ 			}
+ 		},
 
  		props : {
  			disabled : {
@@ -34,10 +40,6 @@
  			icon : {
  				type : String,
  				default : ''
- 			},
- 			nativeType : {
- 				type : String,
- 				default : 'button'
  			}
  		}
 

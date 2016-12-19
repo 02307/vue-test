@@ -5,33 +5,66 @@
     <title>vue test1</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" id="viewport" name="viewport">
+    <link rel="stylesheet" type="text/css" href="./styles/bootstrap.min.css" />
     <style type="text/css">
-        [class$="-enter-active"],[class$="-leave-active"]{
-            transition: all .3s;
-        }
-        .fade-enter,[class$="-leave-active"]{
-            transform: translate( 0 , 30px );
-            opacity: 0;
-        }
+    [class$="-enter-active"],
+    [class$="-leave-active"] {
+        transition: all .3s;
+    }
+    
+    .fade-enter,
+    [class$="-leave-active"] {
+        transform: translate( 0, 30px);
+        opacity: 0;
+    }
+
     </style>
 </head>
 
 <body>
     <div id="app">
+        <btn>button</btn>
 
-    	<router-link to="/">index</router-link>
-    	<router-link to="/list">list</router-link>
-        <router-link to="/user/11">user1</router-link>
-        <router-link to="/user/22">user2</router-link>
+        <btn-group vertical>
+            <btn v-for="n in 10">
+                btn-{{ n }}
+            </btn>
+        </btn-group>
+
+        <input-group isbtn>
+            <dropdown>
+                <btn>dropdown</btn>
+                <dropdown-menu>
+                    <dropdown-item header text="aaa">aaa</dropdown-item>
+                    <dropdown-item>bbb</dropdown-item>
+                    <dropdown-item>ccc</dropdown-item>
+                    <dropdown-item separator></dropdown-item>
+                    <dropdown-item disabled>bbb</dropdown-item>
+                    <dropdown-item text="what fuck">ccc</dropdown-item>
+                </dropdown-menu>
+            </dropdown>
+        </input-group>
+
+        <navs pill>
+            <nav-item>
+                <router-link to="/">index</router-link>
+            </nav-item>
+            <nav-item>
+                <router-link to="/list">list</router-link>
+            </nav-item>
+            <nav-item>
+                <router-link to="/user">user1</router-link>
+            </nav-item>
+        </navs>
 
         <transition name="fade" mode="out-in">
             <router-view></router-view>
-        </transition>    	
-
+        </transition>
+        
     </div>
-
     <script type="text/javascript" src="./dist/vendor.js"></script>
     <script type="text/javascript" src="./dist/app.js"></script>
 </body>
 
 </html>
+

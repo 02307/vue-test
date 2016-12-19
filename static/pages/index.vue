@@ -7,8 +7,6 @@
 const { mapState , mapActions } = require( 'vuex' );
 module.exports = {
 
-    props: {},
-
     data(){
     	return {
     		n : 1
