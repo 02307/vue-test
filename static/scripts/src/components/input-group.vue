@@ -1,16 +1,11 @@
 <template>
     <div class="input-group" :class="[
     	size ? 'input-group-' + size : ''
-    ]">        
-        <input v-if="after" :type="type" class="form-control" :placeholder="placeholder" />
-        <span 
-            :class="[
-        	   isbtn ? 'input-group-btn' : 'input-group-addon'
-            ]"
-        >
-            <slot />
-        </span>
-        <input v-if="!after" :type="type" class="form-control" :placeholder="placeholder" />        
+    ]">
+        <slot name="before" />
+        <slot />      
+        <input :type="type" class="form-control" :placeholder="placeholder" /> 
+        <slot name="after" />
     </div>
 </template>
 
@@ -33,16 +28,7 @@ module.exports = {
 
         placeholder : {
             type : String
-        },
-
-        isbtn : {
-            type : Boolean
-        },
-
-        after : {
-            type : Boolean
         }
-
 
 	}
 

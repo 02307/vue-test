@@ -1,20 +1,16 @@
 <template>
-	<transition>
-	    <ul class="dropdown-menu" 
-	    	:class="{'dropdown-menu-right' : right }"
-	    >
-	        <slot  />
-	    </ul>
-	</transition>
+    <ul class="dropdown-menu" 
+    	:class="{'dropdown-menu-right' : right }"
+    >
+        <slot  />
+    </ul>
 </template>
 
 <script type="text/javascript">
 
 	module.exports = {
 		props : {
-			right : {
-				type : Boolean
-			}
+			right : Boolean
 		}
 	}
 	

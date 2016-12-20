@@ -23,27 +23,6 @@
 
 <body>
     <div id="app">
-        <btn>button</btn>
-
-        <btn-group vertical>
-            <btn v-for="n in 10">
-                btn-{{ n }}
-            </btn>
-        </btn-group>
-
-        <input-group isbtn>
-            <dropdown>
-                <btn>dropdown</btn>
-                <dropdown-menu>
-                    <dropdown-item header text="aaa">aaa</dropdown-item>
-                    <dropdown-item>bbb</dropdown-item>
-                    <dropdown-item>ccc</dropdown-item>
-                    <dropdown-item separator></dropdown-item>
-                    <dropdown-item disabled>bbb</dropdown-item>
-                    <dropdown-item text="what fuck">ccc</dropdown-item>
-                </dropdown-menu>
-            </dropdown>
-        </input-group>
 
         <navs pill>
             <nav-item>
@@ -55,15 +34,66 @@
             <nav-item>
                 <router-link to="/user">user1</router-link>
             </nav-item>
+            <nav-item dropdown>
+                <a href="javascript:;">link<span class="caret"></span></a>
+                <dropdown-menu>
+                    <dropdown-item header text="aaa">aaa</dropdown-item>
+                    <dropdown-item>bbb</dropdown-item>
+                    <dropdown-item>ccc</dropdown-item>
+                    <dropdown-item separator></dropdown-item>
+                    <dropdown-item disabled>bbb</dropdown-item>
+                    <dropdown-item text="what fuck">ccc</dropdown-item>
+                </dropdown-menu>
+            </nav-item>
         </navs>
 
         <transition name="fade" mode="out-in">
             <router-view></router-view>
         </transition>
+
+        <btn-group>
+            <btn v-for="n in 10">
+                btn-{{ n }}
+            </btn>
+            <btn-group>
+                <btn type="info">
+                    dropdown
+                    <span class="caret"></span>
+                </btn>
+                <dropdown-menu>
+                    <dropdown-item header text="aaa">aaa</dropdown-item>
+                    <dropdown-item>bbb</dropdown-item>
+                    <dropdown-item>ccc</dropdown-item>
+                    <dropdown-item separator></dropdown-item>
+                    <dropdown-item disabled>bbb</dropdown-item>
+                    <dropdown-item text="what fuck">ccc</dropdown-item>
+                </dropdown-menu>
+            </btn-group>
+        </btn-group>
+
+        <input-group isbtn size="sm">
+            <input-addon btn slot="after">
+                <btn size="sm">dropdown</span></btn>
+                <btn size="sm"><span class="caret"></btn>
+                <dropdown-menu>
+                    <dropdown-item header text="aaa">aaa</dropdown-item>
+                    <dropdown-item>bbb</dropdown-item>
+                    <dropdown-item>ccc</dropdown-item>
+                    <dropdown-item separator></dropdown-item>
+                    <dropdown-item disabled>bbb</dropdown-item>
+                    <dropdown-item text="what fuck">ccc</dropdown-item>
+                </dropdown-menu>
+            </input-addon>
+        </input-group>
+
+        <input-group>
+            <input-addon slot="after">
+                fu..k    
+            </input-addon>
+        </input-group>
         
     </div>
-    <script type="text/javascript" src="./dist/vendor.js"></script>
-    <script type="text/javascript" src="./dist/app.js"></script>
+    
 </body>
 
 </html>

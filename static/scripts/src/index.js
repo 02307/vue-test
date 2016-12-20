@@ -1,7 +1,7 @@
 const Vue = require( 'vue' );
 
-// 注册指令
-let directives = require( './mixins/directives.js' );
+// 使用插件
+let directives = require( './plugins/directives.js' );
 Vue.use( directives );
 
 // 注册组件
@@ -11,6 +11,7 @@ _createComponent( 'dropdown-item' );
 _createComponent( 'button' );
 _createComponent( 'button-group' );
 _createComponent( 'input-group' );
+_createComponent( 'input-addon' );
 _createComponent( 'nav' );
 _createComponent( 'nav-item' );
 

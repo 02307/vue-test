@@ -8,11 +8,9 @@
     "dist": "build"
   },
   "author": "blueni",
-  "main" : "main.js",
+  "main": "main.js",
   "product-name": "a electron test app",
   "devDependencies": {
-    "electron": "^1.4.10",
-    "electron-builder": "^8.6.0",
     "babel": "^6.5.2",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.9",
@@ -20,7 +18,10 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-2": "^6.18.0",
     "css-loader": "^0.26.1",
+    "electron": "^1.4.10",
+    "electron-builder": "^8.6.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.24.1",
     "vue-loader": "^10.0.2",
     "vue-template-compiler": "^2.1.4",
     "webpack": "^1.14.0"

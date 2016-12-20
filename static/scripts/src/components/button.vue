@@ -35,7 +35,7 @@
  				default : 'default'
  			},
  			size : {
- 				type : Number
+ 				type : String
  			},
  			icon : {
  				type : String,

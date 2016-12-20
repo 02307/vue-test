@@ -1,5 +1,6 @@
 const path = require( 'path' );
 const webpack = require( 'webpack' );
+const htmlWebpackPlugin = require( 'html-webpack-plugin' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 module.exports = {
@@ -38,13 +39,19 @@ module.exports = {
 
 	plugins : [
 		new ExtractTextPlugin({
-			filename : 'components-[chunkhash].css',
+			filename : 'components.css',
 			disable : false,
 			allChunks : true
 		}),
 
 		new webpack.optimize.CommonsChunkPlugin({
 			name : [ 'vendor' ]
+		}),
+
+		new htmlWebpackPlugin({
+			template : 'static/index.html',
+			inject : true,
+			hash : true
 		})
 
 	],

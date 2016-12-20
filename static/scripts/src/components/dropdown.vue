@@ -1,52 +1,34 @@
-<template>
-    <div class="dropdown" 
-        :class="[
-            { 'dropup' : dropup },
-            { 'open' : isOpen }
-        ]"
-        @click="isOpen=!isOpen"
-        v-outclick="hide"
-    >        
-        <slot />
-    </div>
-</template>
-
 <script type="text/javascript">
+const dropdown = require( '../mixins/dropdown.js' );
 module.exports = {
 
-    data(){
-        return {
-            isOpen : false,
-            list : []
-        }
-    },
+    mixins : [ dropdown ],
 
     props: {
         dropup : {
         	type : Boolean
+        },
+        tag : {
+            type : String,
+            default : 'div'
         }
     },
 
-    mounted(){
-        this.$on( 'item-click' , function( event , text , child ){
-            this.itemClick( text );
-        })
-    },
+    render( createElement ){
+        return createElement( this.tag , {
+            class : {
+                dropdown : true,
+                dropup : this.dropup,
+                open : this.isOpen
+            },
+            directives : [
+                {
+                    name : 'outclick',
+                    expression : 'hide'
+                }
+            ]
 
-    methods : {
-
-        show(){
-            this.isOpen = true;
-        },
-
-        hide(){
-            this.isOpen = false;
-        },
-
-        itemClick( args ){
-            console.log( 'item-click' , args )
-        }
-
+        } , this.$slots.default );
     }
 
 }

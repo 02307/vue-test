@@ -21,8 +21,8 @@ module.exports = {
 	},
 
 	mounted(){
-		this.$on( 'item-click' , function( event , href , item ){
-			this.selectItem( event , href , item );
+		this.$on( '@@item-click' , function( event , href , item ){
+			this.$emit( 'item-click' , event , href , item );
 		});
 	},
 
