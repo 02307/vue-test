@@ -3,6 +3,9 @@ const webpack = require( 'webpack' );
 const htmlWebpackPlugin = require( 'html-webpack-plugin' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
+// 这里直接设置为生产环境(开发环境请设置为'development')
+process.env.NODE_ENV = 'production';
+
 module.exports = {
 
 	entry : {
@@ -50,8 +53,7 @@ module.exports = {
 
 		new htmlWebpackPlugin({
 			template : 'static/index.html',
-			inject : true,
-			hash : true
+			inject : true
 		})
 
 	],

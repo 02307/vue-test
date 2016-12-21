@@ -13,8 +13,6 @@
 
 module.exports = {
 
-	name : 'input-group',
-
 	props : {
 
 		size : {

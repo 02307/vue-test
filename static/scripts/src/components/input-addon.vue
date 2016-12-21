@@ -4,10 +4,9 @@
 			btn ? 'input-group-btn' : 'input-group-addon',
 			{ open : isOpen }
 		]"
-		v-outclick="hide"
 	>
 		<slot />
-	</div>	
+	</div>
 </template>
 
 <script type="text/javascript">
@@ -18,8 +17,7 @@ module.exports = {
 	mixins : [ dropdown ],
 
 	props : {
-		btn : Boolean,
-		dropdown : Boolean
+		btn : Boolean
 	}
 
 }

@@ -6,7 +6,6 @@
  			{ 'open' : isOpen },
  			size ? 'btn-group-' + size : ''
  		]"
- 		v-outclick="hide"
 	>
 		<slot />
 	</div>

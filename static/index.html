@@ -19,6 +19,8 @@
     }
 
     </style>
+
+    <script src="./scripts/lib/promise.min.js"></script>
 </head>
 
 <body>
@@ -35,7 +37,7 @@
                 <router-link to="/user">user1</router-link>
             </nav-item>
             <nav-item dropdown>
-                <a href="javascript:;">link<span class="caret"></span></a>
+                <a toggle href="javascript:;">link<span class="caret"></span></a>
                 <dropdown-menu>
                     <dropdown-item header text="aaa">aaa</dropdown-item>
                     <dropdown-item>bbb</dropdown-item>
@@ -74,8 +76,8 @@
         <input-group isbtn size="sm">
             <input-addon btn slot="after">
                 <btn size="sm">dropdown</span></btn>
-                <btn size="sm"><span class="caret"></btn>
-                <dropdown-menu>
+                <btn toggle size="sm"><span class="caret"></btn>
+                <dropdown-menu right>
                     <dropdown-item header text="aaa">aaa</dropdown-item>
                     <dropdown-item>bbb</dropdown-item>
                     <dropdown-item>ccc</dropdown-item>
@@ -91,8 +93,11 @@
                 fu..k    
             </input-addon>
         </input-group>
-        
+
     </div>
+
+    <script type="text/javascript" src="./dist/vendor.js"></script>
+    <script type="text/javascript" src="./dist/app.js"></script>
     
 </body>
 

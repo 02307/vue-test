@@ -20,14 +20,7 @@ module.exports = {
                 dropdown : true,
                 dropup : this.dropup,
                 open : this.isOpen
-            },
-            directives : [
-                {
-                    name : 'outclick',
-                    expression : 'hide'
-                }
-            ]
-
+            }
         } , this.$slots.default );
     }
 
