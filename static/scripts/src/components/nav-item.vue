@@ -18,7 +18,11 @@ module.exports = {
 	render( createElement ){
 		let options = {
 			props : {
-				disabled : this.disabled
+				disabled : this.disabled,
+				tag : {
+					type : String,
+					default : 'li'
+				}
 			},
 			class : {
 				active : this.active,

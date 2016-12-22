@@ -3,8 +3,37 @@ const webpack = require( 'webpack' );
 const htmlWebpackPlugin = require( 'html-webpack-plugin' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
-// 这里直接设置为生产环境(开发环境请设置为'development')
-process.env.NODE_ENV = 'production';
+// 设置node环境变量(development ==> 开发环境 , production ==> 生产环境)
+process.env.NODE_ENV = 'development';
+let env = process.env.NODE_ENV;
+
+let plugins = [
+	new ExtractTextPlugin({
+		filename : 'components.css',
+		disable : false,
+		allChunks : true
+	}),
+
+	new webpack.optimize.CommonsChunkPlugin({
+		name : [ 'vendor' ]
+	}),
+
+	new htmlWebpackPlugin({
+		template : 'static/index.html',
+		inject : true
+	})
+];
+
+if( env == 'production' ){
+	plugins.push(
+		new webpack.optimize.UglifyJsPlugin({
+			compress : {
+				warnings : false
+			}
+		})
+	);
+}
+
 
 module.exports = {
 
@@ -23,11 +52,7 @@ module.exports = {
 			{
 				test : /\.js$/,
 				loader : 'babel',
-				exclude : /node_modules/,
-				query: {
-					presets: ['es2015', "stage-2"],
-      				plugins: ['transform-runtime']
-				}
+				exclude : /node_modules/
 			},
 			{
 				test : /\.vue$/,
@@ -35,28 +60,12 @@ module.exports = {
 			},
 			{
 				test : /\.css|\.less$/,
-				loader : ExtractTextPlugin.extract( 'css-loader?sourceMap' )
+				loader : ExtractTextPlugin.extract( 'style!css!less' )
 			}	
 		]
 	},
 
-	plugins : [
-		new ExtractTextPlugin({
-			filename : 'components.css',
-			disable : false,
-			allChunks : true
-		}),
-
-		new webpack.optimize.CommonsChunkPlugin({
-			name : [ 'vendor' ]
-		}),
-
-		new htmlWebpackPlugin({
-			template : 'static/index.html',
-			inject : true
-		})
-
-	],
+	plugins,
 
 	resolve : {
 		alias : {
@@ -77,6 +86,11 @@ module.exports = {
 		loaders : {
 			js : 'babel'
 		}
+	},
+
+	babel: {
+		presets: ['es2015', "stage-2"],
+		plugins: ['transform-runtime']
 	}
 
 }
