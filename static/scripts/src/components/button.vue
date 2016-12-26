@@ -8,9 +8,10 @@
  			{ active : active },
  			{ disabled : disabled }
  		]"
+ 		@click.stop="$emit( 'click' , $event )"
  	>
  		<i :class="'icon-' + icon" v-if="icon"></i>
- 		<span v-if="$slots.default"><slot /></span>
+		<slot />
  	</button>
  </template>
 

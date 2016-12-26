@@ -1,5 +1,6 @@
 <template>
 	<ul 
+		v-if="total"
 		class="pagination"
 		:class="[
 			size ? 'pagination-' + size : ''
@@ -7,19 +8,19 @@
 		@click.stop="__changePage"
 	>
         <li
-        	:class="{ disabled : currentPage == 1 }"
+        	:class="{ disabled : current == 1 }"
         >
         	<a :href="'javascript:' + prev() + ';'" @click.stop="__changePage( $event , prev() )">&laquo;</a>
         </li>
 		<li 
 			v-for="page in pages"
-			:class="{ active : currentPage == page }"
+			:class="{ active : current == page }"
 		>
 			<a v-if="page" :href="'javascript:' + page + ';'" >{{ page }}</a>
 			<span v-else>...</span>
 		</li>
         <li
-        	:class="{ disabled : currentPage == max }"
+        	:class="{ disabled : current == max }"
         >
         	<a :href="'javascript:' + next() + ';'" @click.stop="__changePage( $event , next() )">&raquo;</a>
         </li>
@@ -29,18 +30,6 @@
 <script type="text/javascript">
 
 module.exports = {
-
-	data(){
-		let current = this.current;
-		let max = Math.ceil( this.total / this.rows );
-		let currentPage = 
-				current < 1 ? 1
-				: current > max ? max
-				: current;
-		return {
-			currentPage
-		}
-	},
 
 	props : {
 		size : String,
@@ -65,9 +54,9 @@ module.exports = {
 			if( max == 1 ){
 				return pgs;
 			}
-			let currentPage = this.currentPage;
-			let before = currentPage - 2;
-			let after = currentPage + 2;
+			let current = this.current;
+			let before = current - 2;
+			let after = current + 2;
 			before = before <= 3 ? 2 : before;
 			after = after >= max - 2 ? max - 1 : after;
 			// before大于3,在前面加省略号
@@ -88,27 +77,21 @@ module.exports = {
 
 	methods : {
 		prev(){
-			return this.currentPage > 2 ? this.currentPage - 1 : 1;
+			return this.current > 2 ? this.current - 1 : 1;
 		},
 		next(){
-			return this.currentPage < this.max ? this.currentPage + 1 : this.max;
+			return this.current < this.max ? this.current + 1 : this.max;
 		},
 		__changePage( event , _page ){
 			let target = event.target;
 			let page = +target.innerText.trim() || _page;
 			if( page
 				&& page > 0 && page <= this.max
-				&& page !== this.currentPage ){
-				this.currentPage = page;
+				&& page !== this.current ){
 				return this.$emit( 'page-change' , page );
 			}
 		}
-	},
-
-	watch : {
-		rows( value ){
-			return this.$emit( 'rows-change' , value );
-		}
 	}
+
 }
 </script>

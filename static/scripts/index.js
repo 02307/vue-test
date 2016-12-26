@@ -11,10 +11,27 @@ const router = new VueRouter( require( './router.js' ) );
 const store = new Vuex.Store( require( './store' ) );
 
 window.app = new Vue({
+	data : {
+		// test pagination
+		rows : 10,
+		current : 5,
+		pageRows : [
+			10 , 20 , 30 , 40 
+		]
+	},
+
 	el : '#app',
 	router,
 	store,
-	created(){
-		router.push( '/user/33' );
+	methods : {
+		changeRows( rows ){
+			this.rows = rows;
+		},
+		changePage( page ){
+			this.current = page;
+		}
+
 	}
+
+
 });

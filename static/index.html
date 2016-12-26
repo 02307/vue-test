@@ -79,7 +79,7 @@
                     <dropdown-item>ccc</dropdown-item>
                     <dropdown-item separator></dropdown-item>
                     <dropdown-item disabled>bbb</dropdown-item>
-                    <dropdown-item text="what fuck">ccc</dropdown-item>
+                    <dropdown-item text ="what fuck">ccc</dropdown-item>
                 </dropdown-menu>
             </input-addon>
         </input-group>
@@ -91,50 +91,68 @@
         </input-group>
 
         <pager
-            layout="total,pager"
             size="sm"
             :total="200"
-            :rows="20"
-            :current="12"
+            :rows="rows"
+            :current="current"
+            @page-change="changePage"
         >
         </pager>
         
-        <div class="container">
+
+        <br />
 
 
-        <div class="pagination-widget">
-            <span class="pagination-total">共 200 条</span>
-            <dropdown size="sm">  
-                <btn size="sm">dropdown <span class="caret"></span></btn>
-                <dropdown-menu>
-                    <dropdown-item header text="aaa">aaa</dropdown-item>
-                    <dropdown-item>bbb</dropdown-item>
-                    <dropdown-item>ccc</dropdown-item>
-                    <dropdown-item separator></dropdown-item>
-                    <dropdown-item disabled>bbb</dropdown-item>
-                    <dropdown-item text="what fuck">ccc</dropdown-item>
-                </dropdown-menu>
-            </dropdown>
-            <ul class="pagination pagination-sm">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><span>...</span></li>
-                <li><a href="#">&raquo;</a></li>
-            </ul>
+        <pagination
+            layout="total,selector,pager,jumper"
+            size="sm"
+            :rows="rows"
+            :page-rows="pageRows"
+            :total="200"
+            :current="current"
+            @rows-change="changeRows"
+            @page-change="changePage"
+        >
+        </pagination>
 
-        </div>
 
-        </div>
+            <!-- <div class="pagination-widget">
+                <div class="pagination-total">
+                    <span>共 200 条</span>
+                </div>
+                <div class="pagination-selector">
+                    <dropdown>
+                        <btn>dropdown <span class="caret"></span></btn>
+                        <dropdown-menu>
+                            <dropdown-item header text="aaa">aaa</dropdown-item>
+                            <dropdown-item>bbb</dropdown-item>
+                            <dropdown-item>ccc</dropdown-item>
+                            <dropdown-item separator></dropdown-item>
+                            <dropdown-item disabled>bbb</dropdown-item>
+                            <dropdown-item text="what fuck">ccc</dropdown-item>
+                        </dropdown-menu>
+                    </dropdown>
+                </div>
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><span>...</span></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
 
-                <input-group size="sm" placeholder="n">
-                    <input-addon btn slot="after">
-                        <btn>前往</btn>
-                    </input-addon>
-                </input-group>
+                <div class="pagination-jumper">
+                    <span>
+                        跳转到第<input type="text" placeholder="1" />页
+                        <btn size="sm">GO</btn>
+                    </span>     
+                </div>
+
+            </div> -->
+
 
     </div>
 
