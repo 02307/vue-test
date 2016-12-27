@@ -5,7 +5,7 @@
 			{ divider : separator },
 			{ 'dropdown-header' : header }
 		]"
-		@click="!disabled && !header && !separator && dispatch( 'dropdown' , '@@item-click' , $event , text )"
+		@click="!disabled && !header && !separator && dispatch( /^dropdown$|^btn-group$/ , '@@item-click' , $event , text )"
 	>
 		<template v-if="header || separator">
 			<slot />

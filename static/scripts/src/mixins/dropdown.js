@@ -5,8 +5,7 @@ module.exports = {
 	data(){
 		return {
 			isOpen : false,
-            __isDropdown : false,
-			itemList : []
+            __isDropdown : false
 		};
 	},
 

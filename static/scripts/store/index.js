@@ -5,7 +5,17 @@ const actions = require( './actions.js' );
 module.exports = {
 
 	state : {
-		
+		code : '',
+		nav : '/dropdown',
+		navs : [
+			'dropdown' ,
+			'btn' ,
+			'btn-group' ,
+			'input-group' ,
+			'navs' ,
+			'pager' ,
+			'pagination'
+		]
 	},
 
 	getters,

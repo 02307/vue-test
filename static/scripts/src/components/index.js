@@ -10,9 +10,15 @@ const navItem = require( './nav-item.vue' );
 const pager = require( './pager.vue' );
 const pagination = require( './pagination/pagination.vue' );
 
+let installed = false;
+
 module.exports = {
 
 	install( Vue ){
+		if( installed ){
+			return;
+		}
+		installed = true;
 		Vue.component( 'dropdown' , dropdown );
 		Vue.component( 'dropdown-menu' , dropdownMenu );
 		Vue.component( 'dropdown-item' , dropdownItem );

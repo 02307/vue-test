@@ -7,7 +7,7 @@
 			</btn>
 			<dropdown-menu>
 				<dropdown-item v-for="item in pageRows" :text="item">
-					{{ item }}
+					{{ item }}条/页
 				</dropdown-item>
 			</dropdown-menu>
 		</dropdown>

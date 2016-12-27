@@ -98,9 +98,7 @@ module.exports = {
 		});
 
 		return createElement( 'div' , {
-			class : {
-				'pagination-widget' : true
-			}
+			staticClass : 'pagination-widget'
 		} , layouts );
 	}
 

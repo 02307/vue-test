@@ -5,8 +5,8 @@
  		:class="[
  			type ? 'btn-' + type : '',
  			size ? 'btn-' + size : '',
- 			{ active : active },
- 			{ disabled : disabled }
+ 			{ disabled : disabled },
+ 			{ active : active }
  		]"
  		@click.stop="$emit( 'click' , $event )"
  	>
@@ -21,22 +21,13 @@
 
  		name : 'btn',
 
- 		data(){
- 			return {
- 				active : false
- 			}
- 		},
-
  		props : {
- 			disabled : {
- 				type : Boolean
- 			},
+ 			disabled : Boolean,
+ 			active : Boolean,
+ 			size : String,
  			type : {
  				type : String,
  				default : 'default'
- 			},
- 			size : {
- 				type : String
  			},
  			icon : {
  				type : String,

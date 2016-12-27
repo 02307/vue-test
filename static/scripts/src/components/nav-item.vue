@@ -18,11 +18,7 @@ module.exports = {
 	render( createElement ){
 		let options = {
 			props : {
-				disabled : this.disabled,
-				tag : {
-					type : String,
-					default : 'li'
-				}
+				disabled : this.disabled
 			},
 			class : {
 				active : this.active,
@@ -31,7 +27,7 @@ module.exports = {
 			on : {
 				click : event => {
 					if( !this.disabled ){
-						this.dispatch( 'navs' , '@@item-click' , event , this.href );
+						this.dispatch( 'navs' , 'item-click' , event , this.href );
 					}
 				}
 			}

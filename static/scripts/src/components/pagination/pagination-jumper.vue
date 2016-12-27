@@ -18,7 +18,6 @@
 module.exports = {
 	data(){
 		return {
-			currentPage : this.current,
 			page : 1
 		}
 	},
@@ -39,10 +38,9 @@ module.exports = {
 
 	methods : {
 		__handleJump(){
-			if( this.page == this.currentPage ){
+			if( this.page == this.current ){
 				return;
 			}
-			this.currentPage = this.page;
 			this.$emit( 'page-change' , this.page );
 		}
 	}

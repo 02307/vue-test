@@ -1,37 +1,26 @@
 const Vue = require( 'vue' );
 const VueRouter = require( 'vue-router' );
 const Vuex = require( 'vuex' );
-const eleme = require( 'element-ui' );
 
 Vue.use( VueRouter );
 Vue.use( Vuex );
-Vue.use( eleme );
 
 const router = new VueRouter( require( './router.js' ) );
 const store = new Vuex.Store( require( './store' ) );
+const app = require( '../pages/app.vue' );
+
+// 全局跳转时的钩子
+router.beforeEach( ( to , from , next ) => {
+	store.commit( 'changeNav' , to.path );
+	store.dispatch( 'changeCode' , { next });
+});
 
 window.app = new Vue({
-	data : {
-		// test pagination
-		rows : 10,
-		current : 5,
-		pageRows : [
-			10 , 20 , 30 , 40 
-		]
-	},
-
+	template : '<app><slot /></app>',
 	el : '#app',
 	router,
 	store,
-	methods : {
-		changeRows( rows ){
-			this.rows = rows;
-		},
-		changePage( page ){
-			this.current = page;
-		}
-
+	components : {
+		app 
 	}
-
-
 });

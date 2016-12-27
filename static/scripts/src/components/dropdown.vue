@@ -16,8 +16,8 @@ module.exports = {
 
     render( createElement ){
         return createElement( this.tag , {
+            staticClass : 'dropdown',
             class : {
-                dropdown : true,
                 dropup : this.dropup,
                 open : this.isOpen
             }
