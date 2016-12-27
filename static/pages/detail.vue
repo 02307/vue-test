@@ -2,14 +2,14 @@
 	<div class="panel panel-default">
         <div class="panel-heading">{{ nav }}</div>
         <div class="panel-body">
-            <transition mode="in-out">
+            <transition mode="out-in" name="fade">
                 <router-view></router-view>
             </transition>
             <div style="text-align:center;">
                 <a href="javascript:;" @click="show=!show">{{ show ? '收起' : '显示' }}代码</a>
             </div>
-            <transition name="fade" v-if="show">
-                <pre class="pre">{{ code }}</pre>
+            <transition mode="out-in" name="fade">
+                <pre class="pre" v-if="show">{{ code }}</pre>
             </transition>
         </div>
     </div>
