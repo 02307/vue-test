@@ -19,4 +19,5 @@
 	5.安装项目依赖,执行命令cnpm install
 	6.构建前端项目,执行命令webpack
 	7.另开一个命令行,cd your-project,执行node app
+	8.打开浏览器,访问http://localhost:900
 </pre>
