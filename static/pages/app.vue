@@ -1,5 +1,5 @@
 <template>
-    <div class="container row">
+    <div class="container-fluid row">
 
     	<!-- 头部 -->
         <div class="page-header col-md-12 col-lg-12 col-xs-12">

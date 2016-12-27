@@ -16,7 +16,7 @@ router.beforeEach( ( to , from , next ) => {
 });
 
 window.app = new Vue({
-	template : '<app><slot /></app>',
+	template : '<div class="app-container"><app><slot /></app></div>',
 	el : '#app',
 	router,
 	store,
