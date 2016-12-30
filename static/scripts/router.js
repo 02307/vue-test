@@ -31,6 +31,10 @@ module.exports = {
 			component : require( '../pages/demos/pagination-demo.vue' )
 		},
 		{
+			path : '/alert',
+			component : require( '../pages/demos/alert-demo.vue' )
+		},
+		{
 			// 404 跳转到dropdown
 			path : '/*',
 			redirect(){

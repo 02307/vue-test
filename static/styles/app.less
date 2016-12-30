@@ -1,17 +1,8 @@
 @import (reference) "main.less";
+@import "vue-transition.less";
 
 .app-container{
 	max-width: 1200px;
 	min-width: 960px;
 	.block-center;
-}
-
-.fade-enter-active,
-.fade-leave-active{
-	.transition( all , .3s );
-}
-
-.fade-enter,.fade-leave-active{
-	.transform( translate( 0 , 30px ) );
-	.opacity( 0 );
 }

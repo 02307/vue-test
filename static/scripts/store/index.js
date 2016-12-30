@@ -14,7 +14,8 @@ module.exports = {
 			'input-group' ,
 			'navs' ,
 			'pager' ,
-			'pagination'
+			'pagination',
+			'alert'
 		]
 	},
 

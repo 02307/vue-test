@@ -10,19 +10,19 @@
         <li
         	:class="{ disabled : current == 1 }"
         >
-        	<a :href="'javascript:' + prev() + ';'" @click.stop="__changePage( $event , prev() )">&laquo;</a>
+        	<a :href="'javascript:void ' + prev() + ';'" @click.stop="__changePage( $event , prev() )">&laquo;</a>
         </li>
 		<li 
 			v-for="page in pages"
 			:class="{ active : current == page }"
 		>
-			<a v-if="page" :href="'javascript:' + page + ';'" >{{ page }}</a>
+			<a v-if="page" :href="'javascript:void ' + page + ';'" >{{ page }}</a>
 			<span v-else>...</span>
 		</li>
         <li
         	:class="{ disabled : current == max }"
         >
-        	<a :href="'javascript:' + next() + ';'" @click.stop="__changePage( $event , next() )">&raquo;</a>
+        	<a :href="'javascript:void ' + next() + ';'" @click.stop="__changePage( $event , next() )">&raquo;</a>
         </li>
 	</ul>
 </template>
@@ -55,19 +55,19 @@ module.exports = {
 				return pgs;
 			}
 			let current = this.current;
-			let before = current - 2;
-			let after = current + 2;
-			before = before <= 3 ? 2 : before;
-			after = after >= max - 2 ? max - 1 : after;
-			// before大于3,在前面加省略号
-			if( before > 3 ){
+			let first = current - 2;
+			let last = current + 2;
+			first = first <= 3 ? 2 : first;
+			last = last >= max - 2 ? max - 1 : last;
+			// first大于3,在前面加省略号
+			if( first > 3 ){
 				pgs.push( null );
 			}
-			for(let page=before;page<=after;page++){
+			for(let page=first;page<=last;page++){
 				pgs.push( page );
 			}
-			// after小于max-2,在后面加省略号
-			if( after < max - 2 ){
+			// last小于max-2,在后面加省略号
+			if( last < max - 2 ){
 				pgs.push( null );
 			}
 			pgs.push( max );

@@ -31,10 +31,11 @@ module.exports = {
 
     mounted(){
         let hasMenu = _find( this.$children , node => {
-            return node.$options._componentTag == 'dropdown-menu';
+            return node.$options.name == 'dropdown-menu' ||
+                    node.$options._componentTag == 'dropdown-menu';
         });
         if( this.__isDropdown || !hasMenu ){
-            return; 
+            return;
         }
         this.__isDropdown = true;
         let el = this.$el;
@@ -52,13 +53,13 @@ module.exports = {
             this.$emit( 'item-click' , event , text , child );
         });
 
-        toggleBtn && toggleBtn.addEventListener( 'click' , ( event ) => {
+        toggleBtn && toggleBtn.addEventListener( 'click' , event => {
             if( this.disabled ){
                 return;
             }
             event.stopPropagation();
         	this.isOpen = !this.isOpen;
-        });
+        } , false );
 
         outclick.pushEl( toggleBtn || el );
         outclick.onoutclick( toggleBtn || el , event => {

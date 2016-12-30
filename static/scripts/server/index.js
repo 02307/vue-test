@@ -1,7 +1,9 @@
 module.exports = {
 
 	changeCode( nav ){
-		return fetch( '/pages/demos/' + nav + '-demo.vue' );
+		return window.fetch
+				? fetch( '/pages/demos/' + nav + '-demo.vue' )
+				: Promise.resolve( 'no code' );
 	}
 
 

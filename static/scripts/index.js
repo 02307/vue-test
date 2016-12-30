@@ -15,7 +15,7 @@ router.beforeEach( ( to , from , next ) => {
 	store.dispatch( 'changeCode' , { next });
 });
 
-window.app = new Vue({
+window._app = new Vue({
 	template : '<div class="app-container"><app><slot /></app></div>',
 	el : '#app',
 	router,
@@ -24,3 +24,5 @@ window.app = new Vue({
 		app 
 	}
 });
+
+window.Vue = Vue;

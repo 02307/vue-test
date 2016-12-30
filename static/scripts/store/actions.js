@@ -8,10 +8,10 @@ module.exports = {
 			if( res.ok ){
 				res.text().then( text => {
 					commit( 'changeCode' , text );
-					next && next();
 				});
 			}
 		});	
+		next && next();
 	}
 
 

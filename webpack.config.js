@@ -7,22 +7,8 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 process.env.NODE_ENV = 'development';
 let env = process.env.NODE_ENV;
 
-let plugins = [
-	new ExtractTextPlugin({
-		filename : 'components.css',
-		disable : false,
-		allChunks : true
-	}),
-
-	new webpack.optimize.CommonsChunkPlugin({
-		name : [ 'vendor' ]
-	}),
-
-	new htmlWebpackPlugin({
-		template : 'static/index.html',
-		inject : true
-	})
-];
+let watch = true;
+let plugins = [];
 
 if( env == 'production' ){
 	plugins.push(
@@ -32,6 +18,7 @@ if( env == 'production' ){
 			}
 		})
 	);
+	watch = false;
 }
 
 
@@ -65,7 +52,24 @@ module.exports = {
 		]
 	},
 
-	plugins,
+	plugins : [
+		new ExtractTextPlugin({
+			filename : 'components.css',
+			disable : false,
+			allChunks : true
+		}),
+
+		new webpack.optimize.CommonsChunkPlugin({
+			name : [ 'vendor' ]
+		}),
+
+		new htmlWebpackPlugin({
+			template : 'static/index.html',
+			inject : true
+		}),
+		
+		...plugins
+	],
 
 	resolve : {
 		alias : {
@@ -78,8 +82,8 @@ module.exports = {
 	// 当前目录为根目录
 	context : __dirname,
 
-	// 开启watch
-	watch : true,
+	// 是否开启watch
+	watch,
 	
 	// vue 的js部分也由babel来编译
 	vue : {

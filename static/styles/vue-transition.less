@@ -1,0 +1,77 @@
+@import (reference) "main.less";
+
+// vue transform 过渡效果,在<transition>标签里设置相应name属性即可
+// vue transition 过渡效果的mixin
+.vue-transition( @name , @transform , @transition : all , @timing : .3s , @rest... ){
+	.mixin() when ( isruleset( @transition ) ){
+		@transition();
+	}
+	.mixin() when ( default() ){
+		.transition( @transition , @timing , @rest );
+	}
+
+	.@{name}-enter,
+	.@{name}-leave-active{
+		@transform();
+	}
+
+	.@{name}-enter-active,
+	.@{name}-leave-active{
+		.mixin;
+	}
+}
+
+// fade
+.vue-transition( fade , {
+	.opacity( 0 );
+} , opacity );
+
+
+// 只做transform过渡
+.vue-transform( @name , @transform , @timing : .3s , @rest... ){	
+	.vue-transition( @name , @transform , transform , @timing , @rest );	
+}
+
+// up
+.vue-transform( up , {
+	.transform( translate( 0 , -100% ) )
+});
+
+// down
+.vue-transform( down , {
+	.transform( translate( 0 , 100% ) )
+});
+
+// left
+.vue-transform( left , {
+	.transform( translate( -100% , 0 ) );
+});
+
+// right
+.vue-transform( right , {
+	.transform( translate( 100% , 0 ) )
+});
+
+// up-out
+.vue-transform( up-out , {
+	.transform( translate( 0 , -100% ) );
+	.opacity( 0 );
+});
+
+// down-out
+.vue-transform( down-out , {
+	.transform( translate( 0 , 100% ) );
+	.opacity( 0 );
+});
+
+// left-out
+.vue-transform( left-out , {
+	.transform( translate( -100% , 0 ) );
+	.opacity( 0 );
+});
+
+// right-out
+.vue-transform( right-out , {
+	.transform( translate( 100% , 0 ) );
+	.opacity( 0 );
+});

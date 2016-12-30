@@ -1,17 +1,10 @@
 const {
 	optionName , pushEl , destroy
 } = require( '../mixins/outclick.js' );
-let installed;
 
 // 导出vue插件
-module.exports = {
-
-	install( Vue , options ){
-		if( installed )return;
-		installed = true;
-		Vue.directive( 'outclick' , directives.outclick );
-	}
-
+module.exports = Vue => {
+	Vue.directive( 'outclick' , directives.outclick );
 }
 
 // 指令集

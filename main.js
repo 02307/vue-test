@@ -30,9 +30,6 @@ cp( app )( 'active' ).then( () => {
 
 function initApp(){
 	createWindow();
-	setMenu();
-	setTray(); 
-	defineProtocal();
 }
 
 let createWindow = () => {
@@ -46,78 +43,5 @@ let createWindow = () => {
 	});
 
 	cp( mainWin )( 'ready-to-show' , () => mainWin.show() );
-	mainWin.loadURL(url.format({
-		pathname : path.resolve( __dirname , 'static/index.html' ),
-		protocal : 'file',
-		slashes : true
-	}));
-}
-
-let setMenu = () => {
-	let menu = Menu.buildFromTemplate([
-		{
-			label : 'Edit',
-			submenu : [
-				{
-					role : 'undo'
-				},
-				{
-					role : 'redo'
-				},
-				{
-					type : 'separator'
-				},
-				{
-					role : 'cut'
-				},
-				{
-					role : 'copy'
-				},
-				{
-					role : 'paste'
-				},
-				{
-					role : 'selectall'
-				}
-			]
-		},
-		{
-			label : 'View',
-			submenu : [
-				{
-					role : 'toggledevtools'
-				},
-				{
-					role : 'togglefullscreen'
-				}
-			]
-		},
-		{
-			label : 'Quit',
-			role : 'close'
-		}
-	]);
-	Menu.setApplicationMenu( menu );
-}
-
-let setTray = () => {
-	let tray = new Tray( path.resolve( __dirname , 'build/icon.ico' ) );
-	let menu = Menu.buildFromTemplate([
-		{
-			label : 'Quit',
-			role : 'quit'
-		}
-	]);
-	tray.setToolTip( 'a election app created by vue' );
-	tray.setContextMenu( menu )
-}
-
-let defineProtocal = () => {
-    protocol.registerFileProtocol('atom', (request, callback) => {
-    	console.log( 'url' , url );
-		let url = request.url.substr(7);
-		callback({
-			path: path.resolve( __dirname , url )
-		});
-    });
+	mainWin.loadURL( 'http://localhost:900' );
 }
