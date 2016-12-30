@@ -1,7 +1,7 @@
 <template>
 	<transition
-		:enter-class="getEnterLeaveClass()"
-		:leave-class="getEnterLeaveClass()"
+		:enter-class="direction"
+		:leave-active-class="direction == 'right' ? 'prev' : 'next'"
 	>
 		<div
 			class="item"
@@ -24,25 +24,28 @@ module.exports = {
 
 	mixins : [ dispatch ],
 
-	props : {
-		index : Number,
-		active : Boolean,
-		prev : Boolean,
-		next : Boolean,
-		direction : {
-			type : String,
-			default : 'right'
+	data(){
+		let p = this.upFind( 'slider' );
+		return {
+			currentTab : p.currentTab,
+			active : p.currentTab == this.index,
+			prev : p.prevTab == this.index,
+			next : p.nextTab == this.index,
+			direction : p.direction
 		}
 	},
 
-	methods : {
-		getEnterLeaveClass(){
-			let direction = this.direction;
-			let prev = this.prev ? 'prev ' : '';
-			let next = this.next ? 'next ' : '';
-			let cl = prev + next + direction;
-			return cl;
-		}
+	props : {
+		index : Number
+	},
+
+	updated(){
+		let p = this.upFind( 'slider' );
+		this.currentTab = p.currentTab;
+		this.active = p.currentTab == this.index;
+		this.prev = p.prevTab == this.index;
+		this.next = p.nextTab == this.index;
+		this.direction = p.direction;
 	}
 
 }

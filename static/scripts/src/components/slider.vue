@@ -9,13 +9,7 @@
 			</li>
 		</ul>
 		<div class="carousel-inner" ref="inner">
-			<slot
-				:current="currentTab"
-				:prev="prevTab"
-				:next="nextTab"
-				:direction="direction"
-			>
-			</slot>
+			<slot />
 		</div>
 		<template v-if="control">
 			<a href="javascript:;" class="left carousel-control" @click="prev">

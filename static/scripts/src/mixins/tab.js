@@ -26,10 +26,14 @@ module.exports = {
 			if( this.isMoving ){
 				return;
 			}
-			this.direction = direction || 'right';
-			let len = this.tabLength;			
-			this.currentTab = _getIndex( n , len );
-			this.prevTab = _getIndex( n - 1 , len );
+			let len = this.tabLength;
+			let current = _getIndex( n , len );
+			if( current == this.current ){
+				return;
+			}
+			this.direction = direction || ( current > this.currentTab ? 'right' : 'left' );
+			this.prevTab = this.currentTab;
+			this.currentTab = current;
 			this.nextTab = _getIndex( n + 1 , len );
 		},
 
