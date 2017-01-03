@@ -2,6 +2,11 @@ const express = require( 'express' );
 const app = express();
 const path = require( 'path' );
 
+app.use( '/*.vue' , ( req , res , next ) => {
+	res.contentType( 'text/plain' );
+	next();
+});
+
 app.use( express.static( path.resolve( './static' ) ) );
 
 app.get( '/*' , ( req , res ) => {

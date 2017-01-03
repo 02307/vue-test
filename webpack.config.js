@@ -75,7 +75,8 @@ module.exports = {
 		alias : {
 			"vue" : path.resolve( __dirname , 'node_modules/vue/dist/vue.js' ),
 			"vue-router" : path.resolve( __dirname , 'node_modules/vue-router/dist/vue-router.js' ),
-			"vuex" : path.resolve( __dirname , 'node_modules/vuex/dist/vuex.js' )
+			"vuex" : path.resolve( __dirname , 'node_modules/vuex/dist/vuex.js' ),
+			"vue-resource" : path.resolve( __dirname , 'node_modules/vue-resource/dist/vue-resource.js' )
 		}
 	},
 
@@ -92,9 +93,13 @@ module.exports = {
 		}
 	},
 
+	// babel编译es2015和es6-提案2
 	babel: {
 		presets: ['es2015', "stage-2"],
 		plugins: ['transform-runtime']
-	}
+	},
+
+	// 加上source-map,更方便调试
+	devtool : 'source-map'
 
 }
