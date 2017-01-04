@@ -1,4 +1,6 @@
 const Vue = require( 'vue' );
+
+// Vue.http由插件vue-resource提供
 const http = Vue.http;
 
 module.exports = {

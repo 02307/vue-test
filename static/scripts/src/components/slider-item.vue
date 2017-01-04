@@ -2,7 +2,7 @@
 	<transition
 		:enter-class="direction"
 		:leave-active-class="direction == 'right' ? 'prev' : 'next'"
-		@enter="begineSlide"
+		@enter="beginSlide"
 		@after-enter="afterSlide"
 	>
 		<div
@@ -41,15 +41,11 @@ module.exports = {
 	},
 
 	methods : {
-		begineSlide(){
-			if( !isIE9 ){
-				this.dispatch( 'slider' , 'sliding' , true );	
-			}
+		beginSlide(){
+			this.dispatch( 'slider' , 'sliding' , true );
 		},
 		afterSlide(){
-			if( !isIE9 ){
-				this.dispatch( 'slider' , 'sliding' , false );
-			}			
+			this.dispatch( 'slider' , 'sliding' , false );
 		}
 	},
 

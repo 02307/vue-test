@@ -13,5 +13,5 @@ Vue.use( components );
 // 使用vue-router插件
 Vue.use( VueRouter );
 
-// 使用vuex插件
+// 使用vuex插件(vuex 2.*版本需要全局的Promise,刚好vueResource里面有Promise/A的全局实现)
 Vue.use( Vuex );
