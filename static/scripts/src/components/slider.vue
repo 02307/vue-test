@@ -2,8 +2,8 @@
 	<div class="carousel slide">
 		<ul class="carousel-indicators">
 			<li
-				v-for="n in length"
-				:class="{ active : currentTab == n - 1 }"
+				v-for="( n , index ) in length"
+				:class="{ active : currentTab == index }"
 				@click="stepTo( n - 1 )"
 			>
 			</li>

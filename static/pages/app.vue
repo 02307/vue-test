@@ -12,7 +12,7 @@
         <!-- 左侧菜单 -->
         <div class="col-md-3 col-lg-3 col-xs-3">
 
-            <slider control :length="4" :auto="false">
+            <slider control :length="4">
                 <slider-item 
                     v-for="( n , index ) in 4"
                     :index="index"
@@ -47,7 +47,7 @@ module.exports = {
 
     computed: {
     	nav(){
-    		return this.$store.state.nav;
+    		return this.$store.state.common.nav;
     	}
     }
 

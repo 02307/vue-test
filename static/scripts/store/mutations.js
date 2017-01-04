@@ -1,11 +1,11 @@
 module.exports = {
 
-	changeNav( state , nav ){
-		state.nav = nav;
+	['common.changeNav']( state , nav ){
+		state.common.nav = nav;
 	},
 
-	changeCode( state , code ){
-		state.code = code;
+	['common.changeCode']( state , code ){
+		state.common.code = code;
 	}
 
 }

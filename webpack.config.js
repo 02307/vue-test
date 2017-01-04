@@ -75,7 +75,8 @@ module.exports = {
 		alias : {
 			"vue" : path.resolve( __dirname , 'node_modules/vue/dist/vue.js' ),
 			"vue-router" : path.resolve( __dirname , 'node_modules/vue-router/dist/vue-router.js' ),
-			"vuex" : path.resolve( __dirname , 'node_modules/vuex/dist/vuex.js' )
+			"vuex" : path.resolve( __dirname , 'node_modules/vuex/dist/vuex.js' ),
+			'vue-resource' : path.resolve( __dirname , 'node_modules/vue-resource/dist/vue-resource.js' )
 		}
 	},
 

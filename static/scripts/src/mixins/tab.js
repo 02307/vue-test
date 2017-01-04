@@ -9,7 +9,7 @@ module.exports = {
 			currentTab : this.current || 0,
 			tabLength : this.length || 0,
 			timer : null,
-			timing : this.interval || 50000
+			timing : this.interval || 5000
 		}
 	},
 
@@ -35,23 +35,19 @@ module.exports = {
 			this.prevTab = this.currentTab;
 			this.currentTab = current;
 			this.nextTab = _getIndex( n + 1 , len );
+			this.start();
 		},
 
 		start(){
 			this.stop();
-			this.direction = 'right';
-			this.timer = setInterval( () => {
+			this.timer = setTimeout( () => {
 				this.next()
 			} , this.timing );
 		},
 
 		stop(){
-			clearInterval( this.timer );
+			clearTimeout( this.timer );
 		}
-	},
-
-	created(){
-		this.stepTo( 0 );
 	},
 
 	mounted(){
@@ -59,7 +55,7 @@ module.exports = {
 			this.isMoving = isMoving;
 		});
 		if( this.autoPlay ){
-			setTimeout( () => this.start() );
+			this.start();
 		}
 	}
 

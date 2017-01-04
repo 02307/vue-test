@@ -2,7 +2,12 @@ const express = require( 'express' );
 const app = express();
 const path = require( 'path' );
 
-app.use( express.static( path.resolve( './static' ) ) );
+app.use( '/*.vue' , ( req , res , next ) => {
+	res.contentType( 'text/plain' );
+	next()
+});
+
+app.use( express.static( path.resolve( __dirname , './static' ) ) );
 
 app.get( '/*' , ( req , res ) => {
 	return res.redirect( '/' );

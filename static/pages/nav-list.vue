@@ -10,7 +10,7 @@
 module.exports = {
 	computed : {
 		navs(){
-			return this.$store.state.navs;
+			return this.$store.state.common.navs
 		}
 	}
 }

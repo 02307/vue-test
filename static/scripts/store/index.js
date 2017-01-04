@@ -1,28 +1,8 @@
-const getters = require( './getters.js' );
-const mutations = require( './mutations.js' );
-const actions = require( './actions.js' );
+let common = require( './common.js' );
+
 
 module.exports = {
-
-	state : {
-		code : '',
-		nav : '/dropdown',
-		navs : [
-			'dropdown' ,
-			'btn' ,
-			'btn-group' ,
-			'input-group' ,
-			'navs' ,
-			'pager' ,
-			'pagination',
-			'alert'
-		]
-	},
-
-	getters,
-
-	mutations,
-
-	actions
-
+	modules : {
+		common
+	}
 };

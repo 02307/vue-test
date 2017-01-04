@@ -2,13 +2,15 @@
 	<transition
 		:enter-class="direction"
 		:leave-active-class="direction == 'right' ? 'prev' : 'next'"
+		@enter="begineSlide"
+		@after-enter="afterSlide"
 	>
 		<div
 			class="item"
 			:class="[
-				{ active : active }
+				{ active : isActive }
 			]"
-			v-show="active"
+			v-show="isActive"
 		>
 			<slot />
 			<div class="carousel-caption" v-if="$slots.caption">
@@ -18,7 +20,9 @@
 	</transition>
 </template>
 <script type="text/javascript">
+const Vue = require( 'vue' );
 const dispatch = require( '../mixins/dispatch.js' );
+const isIE9 = Vue.util.isIE9;
 
 module.exports = {
 
@@ -27,10 +31,7 @@ module.exports = {
 	data(){
 		let p = this.upFind( 'slider' );
 		return {
-			currentTab : p.currentTab,
-			active : p.currentTab == this.index,
-			prev : p.prevTab == this.index,
-			next : p.nextTab == this.index,
+			isActive : p.currentTab == this.index,
 			direction : p.direction
 		}
 	},
@@ -39,12 +40,22 @@ module.exports = {
 		index : Number
 	},
 
-	updated(){
+	methods : {
+		begineSlide(){
+			if( !isIE9 ){
+				this.dispatch( 'slider' , 'sliding' , true );	
+			}
+		},
+		afterSlide(){
+			if( !isIE9 ){
+				this.dispatch( 'slider' , 'sliding' , false );
+			}			
+		}
+	},
+
+	beforeUpdate(){
 		let p = this.upFind( 'slider' );
-		this.currentTab = p.currentTab;
-		this.active = p.currentTab == this.index;
-		this.prev = p.prevTab == this.index;
-		this.next = p.nextTab == this.index;
+		this.isActive = p.currentTab == this.index;
 		this.direction = p.direction;
 	}
 

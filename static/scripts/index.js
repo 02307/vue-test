@@ -11,8 +11,8 @@ const app = require( '../pages/app.vue' );
 
 // 全局跳转时的钩子
 router.beforeEach( ( to , from , next ) => {
-	store.commit( 'changeNav' , to.path );
-	store.dispatch( 'changeCode' , { next });
+	store.commit( 'common.changeNav' , to.path );
+	store.dispatch( 'common.changeCode' ).then( next );
 });
 
 window._app = new Vue({

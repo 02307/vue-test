@@ -27,7 +27,13 @@ module.exports = {
     },
 
     computed : {
-    	...mapState( [ 'nav' , 'code' ] )
+        nav(){
+            return this.$store.state.common.nav
+        },
+
+        code(){
+            return this.$store.state.common.code
+        }
     },
 
     watch : {
